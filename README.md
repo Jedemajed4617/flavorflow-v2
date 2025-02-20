@@ -1,2 +1,2 @@
 # flavorflow-v2
-Better version
+Better version of flavoflow
