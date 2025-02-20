@@ -22,4 +22,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           local-dir: ./
-          server-dir: ./flavorflow
+          server-dir: ./flavorflow/
