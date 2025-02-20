@@ -3,7 +3,11 @@ name: Deploy to FTP 🚀
 on:
   push:
     branches:
+<<<<<<< HEAD
       - prod  
+=======
+      - production  
+>>>>>>> 8b9547f878e1fc25a0a220828308d0c68b6072b9
 
 jobs:
   deploy:
@@ -22,4 +26,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           local-dir: ./
+<<<<<<< HEAD
           server-dir: ./flavorflow
+=======
+          server-dir: ./flavorflow/
+>>>>>>> 8b9547f878e1fc25a0a220828308d0c68b6072b9
