@@ -17,10 +17,10 @@ jobs:
       - name: Deploy to FTP Server 🚀
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ftp.web-hosting.com
+          server: ftp.tgsoftware.services
           username: velisoft@velisoft.tgsoftware.services
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
           server-dir: /home/tgsoqmsy/velisoft.tgsoftware.services/flavorflow/
           protocol: ftp
-          
+          timeout: 60000        
