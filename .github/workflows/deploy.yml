@@ -15,10 +15,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy to FTP Server 🚀
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        uses: SamKirkland/FTP-Deploy-Action@4.3.5
         with:
           server: ftp.tgsoftware.services
           username: velisoft@velisoft.tgsoftware.services
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: ./flavorflow/
+          server-dir: /home/tgsoqmsy/velisoft.tgsoftware.services/flavorflow/
+          
