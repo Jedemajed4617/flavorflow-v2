@@ -6,28 +6,18 @@
     --subheading-color-lighter: #939393;
 }
 
-/* Scrollbar */
-/* Target the scrollbar track */
-::-webkit-scrollbar-track {
-    background-color: transparent; /* Remove shadow by making the track transparent */
+/* disable scrollbar on sliders */
+.category-list::-webkit-scrollbar {
+    height: 6px; 
 }
 
-/* Target the scrollbar itself */
-::-webkit-scrollbar {
-    width: 8px; /* Adjust scrollbar width */
-    background-color: transparent; /* Remove shadow by making the scrollbar transparent */
-    height: 5px;
+.category-list::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
 }
 
-/* Target the scrollbar thumb */
-::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.3); /* Customize thumb color */
-    border-radius: 40px; /* Round the corners */
-}
-
-/* Optional: Hide scrollbar when not in use */
-::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 0, 0, 0.5); /* Change thumb color on hover */
+.category-list::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 /* CSS Reset */
@@ -41,7 +31,7 @@ html{
     scroll-behavior: smooth;
 }
 html, body {
-    height: 100%;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
 }
 body {
@@ -55,6 +45,7 @@ img {
 a {
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
 }
 ul {
     list-style: none;
@@ -64,9 +55,170 @@ button {
     border: none;
     cursor: pointer;
     outline: none;
+    color: inherit;
 }
 input{
     outline: none;
+    color: inherit;
+    font-family: inherit;
+}
+
+/* Phone nav menu styling */
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 9999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 600px rgba(0, 0, 0, 0.5);
+}
+
+.menu-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-header{
+    width: 100%;
+    height: 10%;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--subheading-color-lighter);
+}
+
+.menu-header > h1{
+    font-size: 2.5rem;
+    color: var(--accent-color-lighter);
+    padding-left: 1rem;
+    text-transform: uppercase;
+}
+
+.menu-header > i{
+    font-size: 2rem;
+    color: var(--accent-color);
+    padding-right: 0.5rem;
+}
+
+.menu-header > button:hover{
+    color: var(--accent-color-lighter);
+}
+
+.menu.open {
+    transform: translateX(0);
+}
+
+.menu-content{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-content > ul {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.menu-content > ul > li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    align-items: center;
+    padding: 1rem;
+}
+
+.menu-content > ul > li > a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    text-align: left;
+    font-size: 1.7rem;
+}
+
+.menu-content > ul > li > i{
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.menu-content > ul > li > a:hover {
+    background-color: #555;
+}
+
+.menu-footercontainer{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.menu-footer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--subheading-color-lighter);
+    justify-content: end;
+}
+
+.menu-footer > li{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.menu-link{
+    width: 100%;
+    height: auto;
+    font-size: 1.7rem;
+}
+
+.menu-footer > li > i{
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+
+/* Simple fadeInUp animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Simple fadeInUp animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Global Styling */
@@ -114,6 +266,15 @@ input{
     align-items: center;
 }
 
+.logo > i{
+    font-size: 2rem;
+    color: var(--accent-color-lighter);
+}
+
+.logo > i:hover{
+    cursor: pointer;
+}
+
 .logo > h1{
     font-size: 3rem;
     padding: 1rem;
@@ -121,6 +282,10 @@ input{
     color: var(--accent-color-lighter);
     font-weight: 600;
     padding-left: 0;
+}
+
+.logo > h1:hover{
+    cursor: pointer;
 }
 
 /* Navigation menu */
@@ -239,7 +404,22 @@ input{
     display: flex;
     justify-content: center;
     overflow: hidden; /* Hide any overflow from the image */
+    position: relative;
 }
+
+.header-reslogocontainer{
+    position: absolute;
+    width: 12rem;
+    height: 12rem;
+    bottom: -1px;
+}
+
+.header-reslogo{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
 
 .header-imgheading {
     width: 95vw;
@@ -249,7 +429,7 @@ input{
     position: relative; /* Needed for absolute positioning of the image */
     overflow: hidden; /* Hide any overflow from the image */
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
 }
 
 .header-img {
@@ -271,6 +451,15 @@ input{
     .header-img {
         min-height: 150px; 
     } 
+
+    .header-reslogocontainer{
+        width: 10rem;
+        height: 10rem;
+        bottom: 10px;
+    }
+    .header-imgheading {
+        margin-bottom: 0;
+    }
 }
 
 @media screen and (max-width: 525px){
@@ -282,6 +471,15 @@ input{
     .header-img {
         min-height: 100px; 
     } 
+
+    .header-reslogocontainer{
+        width: 7rem;
+        height: 7rem;
+        bottom: -1px;
+    }
+    .header-imgheading {
+        margin-bottom: 3rem;
+    }
 }
 
 @media screen and (max-width: 400px){
@@ -537,6 +735,10 @@ input{
         font-size: 1.7rem;
     }
 
+    .logo > i{
+        font-size: 1.3rem;
+    }
+
     .navbar-container{
         height: 5rem;
     }
@@ -559,6 +761,7 @@ input{
     display: flex;
     justify-content: center;
     overflow-x: auto; /* Enable horizontal scrolling for the container */
+    user-select: none;
 }
 
 .category-section {
@@ -597,6 +800,8 @@ input{
     padding-bottom: 2rem;
     overflow-x: auto; /* Enable horizontal scrolling for the list */
     padding-left: 0.5rem;
+    scrollbar-width: thin; 
+    scrollbar-color: transparent transparent;
 }
 
 .category { /* this is the card */
@@ -618,7 +823,6 @@ input{
 
 .category:hover{
     cursor: pointer;
-    box-shadow: 0 4px 8px var(--accent-color-lightest);
 }
 
 .category-figure{
@@ -632,6 +836,11 @@ input{
     width: auto;
     height: 100%;
     border-radius: 1rem;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .category-caption{
@@ -936,6 +1145,9 @@ input{
     border-radius: 5rem;
     padding: 1rem;
     padding-left: 4rem;
+}
+
+.footer-marketing-input-container > input:focus{
     box-shadow: 0 2px 6px var(--accent-color-lightest);
 }
 
@@ -1058,5 +1270,27 @@ input{
 
     .footer-aside-header > h1, .footer-links-header > h1, .footer-marketing-input-header > h1, .footer-marketing-socials-header > h1{
         font-size: 1.4rem;
+    }
+
+    .footer-marketing-input-container > input{
+        width: 80%;
+        height: 3rem;
+    }
+
+    .footer-marketing-input-container > button{
+        position: absolute;
+        top: 20%;
+        left: 1rem;
+    }
+    .footer-marketing-input-container > button > i{
+        font-size: 1.5rem;
+    }
+
+    .footer-marketing-input-container > input::placeholder{
+        font-size: 1.2rem;
+    }
+
+    .footer-marketing-input-container > input{
+        padding-left: 3rem;
     }
 }
